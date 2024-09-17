@@ -26,6 +26,10 @@
 			<string>Krzysztof Szymanski</string>
 			<key>display_name</key>
 			<string>Cocktail for Ventura</string>
+			<key>minimum_os_version</key>
+			<string>13.00</string>
+			<key>maximum_os_version</key>
+			<string>13.99</string>
 			<key>name</key>
 			<string>%NAME%</string>
 			<key>unattended_install</key>
