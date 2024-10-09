@@ -1,45 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<recipe xmlns="https://github.com/autopkg/autopkg">
-    <identifier>com.github.techjedi51.download.Bartender5</identifier>
-    <parentRecipe>com.github.autopkg.download</parentRecipe>
-    <description>Downloads the latest version of Bartender 5.</description>
-    <minimum_version>2.0</minimum_version>
-
-    <inputs>
-        <Input key="NAME" value="Bartender"/>
-        <Input key="appcast_url" value="https://www.macbartender.com/B2/updates/AppcastB5.xml"/>
-        <Input key="filename" value="%NAME%.zip"/>
-    </inputs>
-
-    <process>
-        <!-- Fetch and parse the appcast to get the latest version and download URL -->
-        <Processor>URLTextSearcher</Processor>
-        <Arguments>
-            <Argument key="url" value="%appcast_url%"/>
-            <Argument key="re_pattern">
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Comment</key>
+	<string>Created with Recipe Robot v2.3.1 (https://github.com/homebysix/recipe-robot)</string>
+	<key>Description</key>
+	<string>Downloads the latest version of Bartender 5.</string>
+	<key>Identifier</key>
+	<string>com.github.techjedi51.download.Bartender5</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>Bartender 5</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>2.3</string>
+<key>Process</key>
+    <array>
+        <!-- Step 1: Extract the download URL from the appcast XML -->
+        <dict>
+            <key>Processor</key>
+            <string>URLTextSearcher</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>https://www.macbartender.com/B2/updates/AppcastB5.xml</string>
+                <key>re_pattern</key>
                 <string>(https://macbartender.com/B2/updates/[^"]+/Bartender[^\"]+.zip)</string>
-            </Argument>
-            <Argument key="result_output_var_name" value="download_url"/>
-        </Arguments>
+                <key>result_output_var_name</key>
+                <string>download_url</string>
+            </dict>
+        </dict>
 
-        <!-- Extract the version number from the download URL -->
-        <Processor>Versioner</Processor>
-        <Arguments>
-            <Argument key="input_plist_path" value="%download_url%"/>
-            <Argument key="re_pattern">
+        <!-- Step 2: Extract the version number from the URL -->
+        <dict>
+            <key>Processor</key>
+            <string>Versioner</string>
+            <key>Arguments</key>
+            <dict>
+                <key>input_plist_path</key>
+                <string>%download_url%</string>
+                <key>re_pattern</key>
                 <string>updates/([0-9.-]+)/Bartender</string>
-            </Argument>
-            <Argument key="version_output_var_name" value="version"/>
-        </Arguments>
+                <key>version_output_var_name</key>
+                <string>version</string>
+            </dict>
+        </dict>
 
-        <!-- Download the latest version using the extracted URL -->
-        <Processor>URLDownloader</Processor>
-        <Arguments>
-            <Argument key="url" value="%download_url%"/>
-            <Argument key="filename" value="%filename%"/>
-        </Arguments>
+        <!-- Step 3: Download the extracted URL -->
+        <dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>%download_url%</string>
+                <key>filename</key>
+                <string>Bartender.zip</string>
+            </dict>
+        </dict>
 
-        <!-- End of the download phase -->
-        <Processor>EndOfCheckPhase</Processor>
-    </process>
-</recipe>
+        <!-- Step 4: End the check phase -->
+        <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+        </dict>
+    </array>
+</dict>
+</plist>
