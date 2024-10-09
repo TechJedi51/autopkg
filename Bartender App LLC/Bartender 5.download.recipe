@@ -32,7 +32,7 @@
 				<key>input_string</key>
 				<string>%url%</string>
 				<key>replace</key>
-				<string> </string>
+				<string>%20</string>
 			</dict>
 			<key>Comment</key>
 			<string>The Screens Sparkle feed contains a double-encoded download URL, so we must manually fix it here.</string>
