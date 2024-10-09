@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <recipe xmlns="https://github.com/autopkg/autopkg">
-    <identifier>com.example.munki.bartender5.download</identifier>
+    <identifier>com.github.techjedi51.download.Bartender5</identifier>
     <parentRecipe>com.github.autopkg.download</parentRecipe>
     <description>Downloads the latest version of Bartender 5.</description>
     <minimum_version>2.0</minimum_version>
