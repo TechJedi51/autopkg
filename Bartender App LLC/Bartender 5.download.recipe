@@ -28,11 +28,11 @@
 			<key>Arguments</key>
 			<dict>
 				<key>find</key>
-				<string>%2520</string>
+				<string>%20</string>
 				<key>input_string</key>
 				<string>%url%</string>
 				<key>replace</key>
-				<string>%20</string>
+				<string> </string>
 			</dict>
 			<key>Comment</key>
 			<string>The Screens Sparkle feed contains a double-encoded download URL, so we must manually fix it here.</string>
