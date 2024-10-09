@@ -27,6 +27,8 @@
                 <string>(https://macbartender.com/B2/updates/[^"]+/Bartender[^\"]+.zip)</string>
                 <key>result_output_var_name</key>
                 <string>download_url</string>
+                <key>highest_version</key>
+                <true/>
             </dict>
         </dict>
 
