@@ -36,6 +36,20 @@
 	<string>com.github.techjedi51.download.EcammLive</string>
 	<key>Process</key>
 	<array>
+       <!-- Step 1: Use FileFinder to locate the folder that contains Ecamm Live.app -->
+        <dict>
+            <key>Processor</key>
+            <string>FileFinder</string>
+            <key>Arguments</key>
+            <dict>
+                <key>pattern</key>
+                <string>%RECIPE_CACHE_DIR%/downloads/Applications/*/Ecamm*.app</string> <!-- Look for the .app inside the extracted folder -->
+                <key>path</key>
+                <string>%RECIPE_CACHE_DIR%/downloads/Applications</string> <!-- Search in the unarchived directory -->
+            </dict>
+            <key>output_variable</key>
+            <string>found_filename</string> <!-- Store the full path to the .app -->
+        </dict>
         <dict>
         	<key>Processor</key>
         	<string>DmgCreator</string>
@@ -44,7 +58,7 @@
                 <key>dmg_path</key>
                 <string>%RECIPE_CACHE_DIR%/downloads/EcammLive.dmg</string>
                 <key>dmg_root</key>
-                <string>%RECIPE_CACHE_DIR%/downloads/Applications/Ecamm Live.app</string>
+                <string>%found_filename%</string>
             </dict>
         </dict>
         <dict>
