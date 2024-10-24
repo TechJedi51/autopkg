@@ -37,15 +37,44 @@
 	<key>Process</key>
 	<array>
 		<dict>
+			<key>Processor</key>
+			<string>PkgCreator</string>
+			<key>Arguments</key>
+			<dict>
+				<key>pkgroot</key>
+				<string>/Applications</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%.app</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>DmgMounter</string>
 			<key>Arguments</key>
 			<dict>
 				<key>dmg_path</key>
 				<string>%RECIPE_CACHE_DIR%/%NAME%.dmg</string>
-				<key>dmg_root</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%</string>
 			</dict>
+		</dict>
+		<dict>
 			<key>Processor</key>
-			<string>DmgCreator</string>
+			<string>Copier</string>
+			<key>Arguments</key>
+			<dict>
+				<key>source_path</key>
+				<string>%MOUNTPOINT%/%NAME%.app</string>
+				<key>destination_path</key>
+				<string>/Applications/%NAME%.app</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>DmgUnmounter</string>
+			<key>Arguments</key>
+			<dict>
+				<key>mount_point</key>
+				<string>%MOUNTPOINT%</string>
+			</dict>
 		</dict>
 		<dict>
 			<key>Arguments</key>
