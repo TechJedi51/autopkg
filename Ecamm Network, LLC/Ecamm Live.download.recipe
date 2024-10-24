@@ -9,7 +9,7 @@
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
-		<string>Ecamm Live</string>
+		<string>EcammLive</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>2.3</string>
