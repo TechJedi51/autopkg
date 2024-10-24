@@ -11,7 +11,7 @@
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/Ecamm Live</string>
 		<key>NAME</key>
-		<string>Ecamm Live</string>
+		<string>EcammLive</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
