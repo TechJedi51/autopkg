@@ -15,7 +15,6 @@
 	<string>2.3</string>
 	<key>Process</key>
 	<array>
-		<dict>
         <dict>
             <key>Processor</key>
             <string>URLDownloader</string>
