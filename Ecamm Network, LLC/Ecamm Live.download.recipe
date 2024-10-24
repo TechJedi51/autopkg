@@ -15,18 +15,7 @@
 	<string>2.3</string>
 	<key>Process</key>
 	<array>
-        <!-- Step 1: Clean up any old versions in the extraction folder -->
-        <dict>
-            <key>Processor</key>
-            <string>RmDir</string> <!-- This processor will remove the existing folder -->
-            <key>Arguments</key>
-            <dict>
-                <key>path</key>
-                <string>%RECIPE_CACHE_DIR%/downloads/Applications</string> <!-- Ensure no leftover versions -->
-            </dict>
-        </dict>
-
-	<!-- Step 2: Download the ZIP file -->
+	<!-- Step 1: Download the ZIP file -->
         <dict>
             <key>Processor</key>
             <string>URLDownloader</string>
@@ -42,7 +31,7 @@
             <key>Processor</key>
             <string>EndOfCheckPhase</string>
         </dict>
-        <!-- Step 3: Unarchive the ZIP file -->
+        <!-- Step 2: Unarchive the ZIP file -->
         <dict>
             <key>Processor</key>
             <string>Unarchiver</string>
@@ -52,9 +41,11 @@
                 <string>%pathname%</string>
                 <key>destination_path</key>
                 <string>%RECIPE_CACHE_DIR%/downloads/Applications</string>
+		<key>purge_destination</key>
+		<true/>
             </dict>
         </dict>
-       <!-- Step 4: Use FileFinder to locate the folder that contains Ecamm Live.app -->
+       <!-- Step 3: Use FileFinder to locate the folder that contains Ecamm Live.app -->
         <dict>
             <key>Processor</key>
             <string>FileFinder</string>
@@ -68,7 +59,7 @@
             <key>output_variable</key>
             <string>found_filename</string> <!-- Store the full path to the .app -->
         </dict>
-      <!-- Step 5: Extract the version number from the Info.plist -->
+      <!-- Step 4: Extract the version number from the Info.plist -->
         <dict>
             <key>Processor</key>
             <string>Versioner</string>
@@ -80,7 +71,7 @@
                 <string>CFBundleShortVersionString</string> <!-- Extract the version -->
             </dict>
         </dict>
-        <!-- Step 6: Check the app -->
+        <!-- Step 5: Check the app -->
         <dict>
             <key>Processor</key>
             <string>CodeSignatureVerifier</string>
