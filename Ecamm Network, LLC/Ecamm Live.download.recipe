@@ -52,7 +52,7 @@
             <key>Arguments</key>
             <dict>
                 <key>pattern</key>
-                <string>Ecamm Live.app</string> <!-- Look for the .app inside the extracted folder -->
+                <string>%RECIPE_CACHE_DIR%/downloads/Applications/*/Ecamm*.app</string> <!-- Look for the .app inside the extracted folder -->
                 <key>path</key>
                 <string>%RECIPE_CACHE_DIR%/downloads/Applications</string> <!-- Search in the unarchived directory -->
             </dict>
