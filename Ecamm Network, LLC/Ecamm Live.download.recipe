@@ -47,18 +47,6 @@
             <key>output_variable</key>
             <string>unarchived_path</string> <!-- Store the full extraction path -->
         </dict>
-        <!-- Step 3: Extract the version number from the folder name -->
-        <dict>
-            <key>Processor</key>
-            <string>Versioner</string>
-            <key>Arguments</key>
-            <dict>
-                <key>input_plist_path</key>
-                <string>%RECIPE_CACHE_DIR%/downloads/Applications/Ecamm Live v*/Ecamm Live.app/Contents/Info.plist</string> <!-- Wildcard for versioned folder -->
-                <key>plist_version_key</key>
-                <string>CFBundleShortVersionString</string>
-            </dict>
-        </dict>
         <dict>
             <key>Processor</key>
             <string>CodeSignatureVerifier</string>
