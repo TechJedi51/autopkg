@@ -9,7 +9,7 @@
 	<key>Input</key>
 	<dict>
 		<key>MUNKI_REPO_SUBDIR</key>
-		<string>apps/%NAME%</string>
+		<string>apps/Ecamm Live</string>
 		<key>NAME</key>
 		<string>Ecamm Live</string>
 		<key>pkginfo</key>
@@ -19,7 +19,7 @@
 				<string>testing</string>
 			</array>
 			<key>description</key>
-			<string>Stream to Facebook Live.</string>
+			<string>The leading live streaming & video production studio built for Mac. The ultimate Zoom Camera system.</string>
 			<key>developer</key>
 			<string>Ecamm Network, LLC</string>
 			<key>display_name</key>
@@ -36,57 +36,40 @@
 	<string>com.github.techjedi51.download.EcammLive</string>
 	<key>Process</key>
 	<array>
-		<dict>
-			<key>Processor</key>
-			<string>PkgCreator</string>
-			<key>Arguments</key>
-			<dict>
-				<key>pkgroot</key>
-				<string>/Applications</string>
-				<key>source_path</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%.app</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>DmgMounter</string>
-			<key>Arguments</key>
-			<dict>
-				<key>dmg_path</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%.dmg</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>Copier</string>
-			<key>Arguments</key>
-			<dict>
-				<key>source_path</key>
-				<string>%MOUNTPOINT%/%NAME%.app</string>
-				<key>destination_path</key>
-				<string>/Applications/%NAME%.app</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>DmgUnmounter</string>
-			<key>Arguments</key>
-			<dict>
-				<key>mount_point</key>
-				<string>%MOUNTPOINT%</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>pkg_path</key>
-				<string>%dmg_path%</string>
-				<key>repo_subdirectory</key>
-				<string>%MUNKI_REPO_SUBDIR%</string>
-			</dict>
-			<key>Processor</key>
-			<string>MunkiImporter</string>
-		</dict>
+        <dict>
+        	<key>Processor</key>
+        	<string>DmgCreator</string>
+            <key>Arguments</key>
+            <dict>
+                <key>dmg_path</key>
+                <string>%RECIPE_CACHE_DIR%/downloads/EcammLive.dmg</string>
+                <key>dmg_root</key>
+                <string>%RECIPE_CACHE_DIR%/downloads/Applications/Ecamm Live.app</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>MunkiImporter</string>
+            <key>Arguments</key>
+            <dict>
+                <key>pkg_path</key>
+                <string>%RECIPE_CACHE_DIR%/downloads/EcammLive.dmg</string>
+                <key>repo_subdirectory</key>
+                <string>%MUNKI_REPO_SUBDIR%</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>PathDeleter</string>
+            <key>Arguments</key>
+            <dict>
+                <key>path_list</key>
+                <array>
+                    <string>%dmg_path%</string>
+                    <string>%RECIPE_CACHE_DIR%/downloads/Applications/</string>
+                </array>
+            </dict>
+        </dict>
 	</array>
 </dict>
 </plist>
