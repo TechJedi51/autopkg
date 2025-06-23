@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>Identifier</key>
-    <string>net.sealsystems.download.8x8work.intel</string>
+    <string>com.github.techjedi51.download.8x8work.intel</string>
     <key>Description</key>
     <string>Downloads latest 8x8 Work for Intel Macs</string>
     <key>Input</key>
