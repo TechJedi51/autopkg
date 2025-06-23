@@ -34,6 +34,7 @@
                 <array>
                     <string>Intel</string>
                 </array>
+                <key>force_munkiimport</key><true/>
             </dict>
         </dict>
     </array>
