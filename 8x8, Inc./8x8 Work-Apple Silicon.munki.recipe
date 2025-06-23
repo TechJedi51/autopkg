@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
     <key>Identifier</key>
-    <string>net.sealsystems.munki.8x8work.silicon</string>
+    <string>com.github.techjedi51.munki.8x8work.silicon</string>
     <key>ParentRecipe</key>
-    <string>net.sealsystems.download.8x8work.silicon</string>
+    <string>com.github.techjedi51.download.8x8work.silicon</string>
     <key>Input</key>
     <dict>
         <key>NAME</key><string>8x8 Work (Silicon)</string>
