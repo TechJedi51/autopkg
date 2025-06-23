@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Identifier</key>
+    <string>net.sealsystems.download.8x8work.intel</string>
+    <key>Description</key>
+    <string>Downloads latest 8x8 Work for Intel Macs</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key><string>8x8 Work (Intel)</string>
+        <key>DOWNLOAD_PAGE</key><string>https://support.8x8.com/business-phone/voice/work-desktop/download-8x8-work-for-desktop</string>
+    </dict>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key><string>URLTextSearcher</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key><string>%DOWNLOAD_PAGE%</string>
+                <key>re_pattern</key><string>href="(https://[^"]+work-dmg-v[0-9.\-]+\.dmg)"</string>
+                <key>result_output_var_name</key><string>intel_url</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key><string>URLDownloader</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key><string>%intel_url%</string>
+                <key>filename</key><string>%NAME%.dmg</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key><string>EndOfCheckPhase</string>
+        </dict>
+        <dict>
+            <key>Processor</key><string>Versioner</string>
+            <key>Arguments</key>
+            <dict>
+                <key>input_plist_path</key><string>%pathname%/8x8 Work.app/Contents/Info.plist</string>
+                <key>plist_version_key</key><string>CFBundleShortVersionString</string>
+            </dict>
+        </dict>
+    </array>
+</dict>
+</plist>
