@@ -18,6 +18,10 @@
             <key>catalogs</key>
             <array><string>testing</string></array>
             <key>unattended_install</key><true/>
+            <key>supported_architectures</key>
+            <array>
+                <string>x86_64</string>
+            </array>
         </dict>
     </dict>
     <key>Process</key>
