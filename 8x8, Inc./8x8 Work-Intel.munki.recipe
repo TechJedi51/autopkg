@@ -32,6 +32,8 @@
             <dict>
                 <key>name</key>
                 <string>8x8Work-Intel</string>
+                <key>version</key>
+                <string>%version%</string>
                 <key>pkg_path</key><string>%pathname%</string>
                 <key>repo_subdirectory</key><string>%MUNKI_REPO_SUBDIR%</string>
                 <key>additional_package_name_components</key>
