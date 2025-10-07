@@ -31,7 +31,7 @@
             <key>Arguments</key>
             <dict>
                 <key>name</key>
-                <string>8x8Work-Intel</string>
+                <string>8x8 Work (Intel)</string>
                 <key>version</key>
                 <string>%version%</string>
                 <key>pkg_path</key><string>%pathname%</string>
