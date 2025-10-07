@@ -13,6 +13,7 @@
         <key>pkginfo</key>
         <dict>
             <key>name</key><string>8x8 Work (Intel)</string>
+            <key>display_name</key><string>8x8 Work for Intel Macs</string>
             <key>description</key><string>Intel build of 8x8 Work</string>
             <key>developer</key><string>8x8, Inc.</string>
             <key>catalogs</key>
