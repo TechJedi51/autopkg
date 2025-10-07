@@ -8,11 +8,11 @@
     <string>com.github.techjedi51.download.8x8work.silicon</string>
     <key>Input</key>
     <dict>
-        <key>NAME</key><string>8x8 Work (Silicon)</string>
+        <key>NAME</key><string>8x8 Work (Apple Silicon)</string>
         <key>MUNKI_REPO_SUBDIR</key><string>apps/8x8 Work</string>
         <key>pkginfo</key>
         <dict>
-            <key>name</key><string>8x8 Work (Silicon)</string>
+            <key>name</key><string>8x8 Work (Apple Silicon)</string>
             <key>description</key><string>Apple Silicon build of 8x8 Work</string>
             <key>developer</key><string>8x8, Inc.</string>
             <key>catalogs</key>
@@ -31,7 +31,7 @@
             <key>Arguments</key>
             <dict>
                 <key>name</key>
-                <string>8x8Work-Silicon</string>
+                <string>8x8 Work (Apple Silicon)</string>
                 <key>version</key><string>%version%</string>
                 <key>pkg_path</key><string>%pathname%</string>
                 <key>repo_subdirectory</key><string>%MUNKI_REPO_SUBDIR%</string>
