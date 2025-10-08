@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>Identifier</key>
-    <string>local.download.LibreOffice-Apple Silicon</string>
+    <string>com.github.techjedi51.download.LibreOffice-Apple Silicon</string>
     <key>Description</key>
     <string>Downloads the latest Apple Silicon build of LibreOffice from The Document Foundation</string>
     <key>Input</key>
