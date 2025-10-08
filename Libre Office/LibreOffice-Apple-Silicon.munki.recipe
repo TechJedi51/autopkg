@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Identifier</key>
+    <string>com.github.techjedi51.munki.LibreOffice-Apple-Silicon</string>
+    <key>ParentRecipe</key>
+    <string>com.github.techjedi51.download.LibreOffice-Apple-Silicon</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key><string>LibreOffice</string>
+        <key>MUNKI_REPO_SUBDIR</key><string>apps/LibreOffice</string>
+        <key>pkginfo</key>
+        <dict>
+            <key>name</key><string>LibreOffice-AppleSilicon</string>
+            <key>display_name</key><string>LibreOffice (Apple Silicon)</string>
+            <key>description</key><string>LibreOffice productivity suite for Apple Silicon Macs</string>
+            <key>developer</key><string>The Document Foundation</string>
+            <key>catalogs</key><array><string>testing</string></array>
+            <key>unattended_install</key><true/>
+            <key>minimum_os_version</key><string>11.0</string>
+            <key>supported_architectures</key><array><string>arm64</string></array>
+        </dict>
+    </dict>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key><string>MunkiImporter</string>
+            <key>Arguments</key>
+            <dict>
+                <key>pkg_path</key><string>%pathname%</string>
+                <key>version</key><string>%version%</string>
+                <key>repo_subdirectory</key><string>%MUNKI_REPO_SUBDIR%</string>
+                <key>name</key><string>LibreOffice-AppleSilicon</string>
+            </dict>
+        </dict>
+    </array>
+</dict>
+</plist>
