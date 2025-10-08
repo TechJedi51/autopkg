@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Identifier</key>
+    <string>com.github.techjedi51.download.LibreOffice-Intel</string>
+    <key>Description</key>
+    <string>Downloads the latest Intel (x86_64) build of LibreOffice by parsing the redirect link</string>
+    <key>Input</key>
+    <dict>
+        <key>DOWNLOAD_PAGE</key>
+        <string>https://www.libreoffice.org/download/download-libreoffice/</string>
+    </dict>
+    <key>Process</key>
+    <array>
+        <!-- Step 1: Find the relative URL for Intel (x86_64) macOS build -->
+        <dict>
+            <key>Processor</key><string>URLTextSearcher</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key><string>%DOWNLOAD_PAGE%</string>
+                <key>re_pattern</key>
+                <string>href='(/download/download-libreoffice/\?type=mac-x86_64&amp;version=[^']+)'</string>
+                <key>result_output_var_name</key><string>relative_url</string>
+            </dict>
+        </dict>
+
+        <!-- Step 2: Download the redirecting URL (which resolves to the .dmg) -->
+        <dict>
+            <key>Processor</key><string>URLDownloader</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>https://www.libreoffice.org%relative_url%</string>
+                <key>filename</key><string>LibreOffice-Intel.dmg</string>
+            </dict>
+        </dict>
+    </array>
+</dict>
+</plist>
