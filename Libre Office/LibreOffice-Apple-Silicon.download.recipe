@@ -3,49 +3,44 @@
 <plist version="1.0">
 <dict>
     <key>Identifier</key>
-    <string>com.github.techjedi51.download.LibreOffice-Apple Silicon</string>
+    <string>com.github.techjedi51.download.LibreOffice-AppleSilicon</string>
     <key>Description</key>
-    <string>Downloads the latest Apple Silicon build of LibreOffice from The Document Foundation</string>
+    <string>Downloads the latest Apple Silicon build of LibreOffice</string>
     <key>Input</key>
     <dict>
-        <key>NAME</key><string>LibreOffice</string>
         <key>DOWNLOAD_PAGE</key>
         <string>https://www.libreoffice.org/download/download-libreoffice/</string>
-        <key>ARCH</key><string>aarch64</string>
-        <key>LANG</key><string>en-US</string>
     </dict>
     <key>Process</key>
     <array>
-        <!-- Get the latest version number from the LibreOffice download page -->
+        <!-- Step 1: Fetch page content -->
+        <dict>
+            <key>Processor</key><string>URLGetter</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key><string>%DOWNLOAD_PAGE%</string>
+            </dict>
+        </dict>
+
+        <!-- Step 2: Extract Apple Silicon .dmg URL -->
         <dict>
             <key>Processor</key><string>URLTextSearcher</string>
             <key>Arguments</key>
             <dict>
-                <key>url</key><string>%DOWNLOAD_PAGE%</string>
+                <key>input_text</key><string>%url_content%</string>
                 <key>re_pattern</key>
-                <string>Stable Version ([0-9.]+)</string>
-                <key>result_output_var_name</key><string>latest_version</string>
+                <string>href="(https://[^"]+MacOS_aarch64\.dmg)"</string>
+                <key>result_output_var_name</key><string>download_url</string>
             </dict>
         </dict>
 
-        <!-- Build the actual download URL -->
-        <dict>
-            <key>Processor</key><string>URLDownloader</string>
-            <key>Arguments</key>
-            <dict>
-                <key>url</key>
-                <string>https://www.libreoffice.org/donate/dl/mac-aarch64/%latest_version%/en-US/LibreOffice_%latest_version%_MacOS_aarch64.dmg</string>
-                <key>filename</key><string>LibreOffice-Silicon.dmg</string>
-            </dict>
-        </dict>
-
-        <!-- Download the .dmg file -->
+        <!-- Step 3: Download the .dmg -->
         <dict>
             <key>Processor</key><string>URLDownloader</string>
             <key>Arguments</key>
             <dict>
                 <key>url</key><string>%download_url%</string>
-                <key>filename</key><string>LibreOffice-Silicon.dmg</string>
+                <key>filename</key><string>LibreOffice-AppleSilicon.dmg</string>
             </dict>
         </dict>
     </array>
