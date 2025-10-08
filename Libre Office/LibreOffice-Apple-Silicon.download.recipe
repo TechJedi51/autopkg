@@ -5,37 +5,37 @@
     <key>Identifier</key>
     <string>com.github.techjedi51.download.LibreOffice-Apple-Silicon</string>
     <key>Description</key>
-    <string>Downloads the latest Apple Silicon build of LibreOffice using constructed direct download URL.</string>
+    <string>Downloads the latest Apple Silicon LibreOffice build using constructed direct URL.</string>
     <key>Input</key>
     <dict>
         <key>DOWNLOAD_PAGE</key>
         <string>https://www.libreoffice.org/download/download-libreoffice/</string>
-        <key>ARCH</key>
+        <key>ARCH_PATH</key>
         <string>aarch64</string>
-        <key>LOCALE</key>
-        <string>en-US</string>
+        <key>ARCH_SUFFIX</key>
+        <string>aarch64</string>
     </dict>
     <key>Process</key>
     <array>
-        <!-- Extract version from the Apple Silicon entry -->
+        <!-- Extract version from the page -->
         <dict>
             <key>Processor</key><string>URLTextSearcher</string>
             <key>Arguments</key>
             <dict>
                 <key>url</key><string>%DOWNLOAD_PAGE%</string>
                 <key>re_pattern</key>
-                <string>href='/download/download-libreoffice/\?type=mac-aarch64&amp;version=([0-9.]+)&amp;lang=en-US'</string>
+                <string>mac-aarch64&amp;version=([0-9.]+)&amp;lang=en-US</string>
                 <key>result_output_var_name</key><string>version</string>
             </dict>
         </dict>
 
-        <!-- Construct the full direct download URL -->
+        <!-- Download using manually constructed final URL -->
         <dict>
             <key>Processor</key><string>URLDownloader</string>
             <key>Arguments</key>
             <dict>
                 <key>url</key>
-                <string>https://www.libreoffice.org/donate/dl/mac-%ARCH%/%version%/%LOCALE%/LibreOffice_%version%_MacOS_%ARCH%.dmg</string>
+                <string>https://download.documentfoundation.org/libreoffice/stable/%version%/mac/%ARCH_PATH%/LibreOffice_%version%_MacOS_%ARCH_SUFFIX%.dmg</string>
                 <key>filename</key><string>LibreOffice-AppleSilicon.dmg</string>
             </dict>
         </dict>
