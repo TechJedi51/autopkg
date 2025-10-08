@@ -3,45 +3,35 @@
 <plist version="1.0">
 <dict>
     <key>Identifier</key>
-    <string>com.github.techjedi51.download.LibreOffice-AppleSilicon</string>
+    <string>com.github.techjedi51.download.LibreOffice-Apple-Silicon</string>
     <key>Description</key>
-    <string>Downloads the latest Apple Silicon build of LibreOffice using the redirect link</string>
+    <string>Downloads the latest Apple Silicon build of LibreOffice by parsing the redirect link</string>
     <key>Input</key>
     <dict>
         <key>DOWNLOAD_PAGE</key>
         <string>https://www.libreoffice.org/download/download-libreoffice/</string>
-        <key>RELATIVE_PATTERN</key>
-        <string>href='(/download/download-libreoffice/\?type=mac-aarch64&amp;version=[^']+)'</string>
     </dict>
     <key>Process</key>
     <array>
-        <!-- Step 1: Grab the relative redirect link from the HTML -->
+        <!-- Step 1: Parse relative link for Apple Silicon -->
         <dict>
             <key>Processor</key><string>URLTextSearcher</string>
             <key>Arguments</key>
             <dict>
                 <key>url</key><string>%DOWNLOAD_PAGE%</string>
-                <key>re_pattern</key><string>%RELATIVE_PATTERN%</string>
+                <key>re_pattern</key>
+                <string>href='(/download/download-libreoffice/\?type=mac-aarch64&amp;version=[^']+)'</string>
                 <key>result_output_var_name</key><string>relative_url</string>
             </dict>
         </dict>
 
-        <!-- Step 2: Prepend the full domain -->
-        <dict>
-            <key>Processor</key><string>StringFormatter</string>
-            <key>Arguments</key>
-            <dict>
-                <key>input_str</key><string>https://www.libreoffice.org%relative_url%</string>
-                <key>output_var_name</key><string>final_url</string>
-            </dict>
-        </dict>
-
-        <!-- Step 3: Download the redirected file (the real .dmg) -->
+        <!-- Step 2: Download using the full URL by inlining -->
         <dict>
             <key>Processor</key><string>URLDownloader</string>
             <key>Arguments</key>
             <dict>
-                <key>url</key><string>%final_url%</string>
+                <key>url</key>
+                <string>https://www.libreoffice.org%relative_url%</string>
                 <key>filename</key><string>LibreOffice-AppleSilicon.dmg</string>
             </dict>
         </dict>
