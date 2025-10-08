@@ -34,7 +34,7 @@
                 <string>identifier "org.libreoffice.script" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "7P5S3ZLCN7"</string>
             </dict>
         </dict>
-    
+
         <!-- Extract version from Info.plist -->
         <dict>
             <key>Processor</key><string>Versioner</string>
@@ -44,7 +44,7 @@
                 <key>plist_version_key</key><string>CFBundleShortVersionString</string>
             </dict>
         </dict>
-    
+
         <!-- Import into Munki -->
         <dict>
             <key>Processor</key><string>MunkiImporter</string>
