@@ -9,7 +9,7 @@
     <key>Input</key>
     <dict>
         <key>NAME</key><string>8x8 Work (Intel)</string>
-        <key>DOWNLOAD_PAGE</key><string>https://support.8x8.com/business-phone/voice/work-desktop/download-8x8-work-for-desktop</string>
+        <key>DOWNLOAD_PAGE</key><string>https://help.8x8.com/support/docs/download-8x8-work-for-desktop</string>
     </dict>
     <key>Process</key>
     <array>
