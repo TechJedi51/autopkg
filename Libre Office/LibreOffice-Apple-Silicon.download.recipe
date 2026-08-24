@@ -24,7 +24,7 @@
             <dict>
                 <key>url</key><string>%DOWNLOAD_PAGE%</string>
                 <key>re_pattern</key>
-                <string>mac-aarch64&amp;version=([0-9.]+)&amp;lang=en-US</string>
+                <string>libreoffice/stable/([0-9.]+)/mac/aarch64/LibreOffice_[0-9.]+_MacOS_aarch64\.dmg</string>
                 <key>result_output_var_name</key><string>version</string>
             </dict>
         </dict>
