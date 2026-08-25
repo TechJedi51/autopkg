@@ -21,11 +21,13 @@
 				<string>testing</string>
 			</array>
 			<key>description</key>
-			<string>Lingon makes scheduling apps, scripts, shortcuts, and commands feel simple. Create a task in minutes, run it on a schedule, and stay in control.</string>
+			<string>Creates and manages launchd jobs, including tasks that run as root or for multiple users.</string>
 			<key>developer</key>
 			<string>Peter Borg Apps AB</string>
 			<key>display_name</key>
 			<string>Lingon Pro</string>
+			<key>minimum_os_version</key>
+			<string>14.0</string>
 			<key>name</key>
 			<string>%NAME%</string>
 			<key>unattended_install</key>

@@ -27,7 +27,7 @@
 			<key>display_name</key>
 			<string>iMazing 3</string>
 			<key>minimum_os_version</key>
-            <string>10.11</string>
+			<string>10.12</string>
 			<key>name</key>
 			<string>%NAME%</string>
 			<key>unattended_install</key>

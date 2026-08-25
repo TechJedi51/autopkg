@@ -5,7 +5,7 @@
 	<key>Comment</key>
 	<string>Created with Recipe Robot v2.3.1 (https://github.com/homebysix/recipe-robot)</string>
 	<key>Description</key>
-	<string>Downloads the latest version of Zoom Universal Installer for IT and imports it into Munki.</string>
+	<string>Downloads the latest Zoom Workplace Universal Installer for IT and imports it into Munki.</string>
 	<key>Identifier</key>
 	<string>com.github.techjedi51.munki.zoom.us</string>
 	<key>Input</key>
@@ -36,11 +36,13 @@
 				<string>testing</string>
 			</array>
 			<key>description</key>
-			<string>This app is the Mac client for cloud-based HD video meeting service Zoom.us.</string>
+			<string>Zoom Workplace provides video meetings, team chat, phone, whiteboard, and collaboration tools.</string>
 			<key>developer</key>
 			<string>Zoom Video Communications, Inc.</string>
 			<key>display_name</key>
-			<string>zoom.us</string>
+			<string>Zoom Workplace</string>
+			<key>minimum_os_version</key>
+			<string>10.15</string>
 			<key>name</key>
 			<string>%NAME%</string>
 			<key>unattended_install</key>
@@ -54,17 +56,15 @@
 	<key>Process</key>
 	<array>
 		<dict>
-		    <key>Arguments</key>
-		    <dict>
-		        <key>pkg_path</key>
-		        <string>%pathname%</string>
-		        <key>version</key>
-		        <string>%version%</string> <!-- ADD THIS -->
-		        <key>repo_subdirectory</key>
-		        <string>%MUNKI_REPO_SUBDIR%</string>
-		    </dict>
-		    <key>Processor</key>
-		    <string>MunkiImporter</string>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%pathname%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
 		</dict>
 	</array>
 </dict>

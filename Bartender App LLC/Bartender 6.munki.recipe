@@ -26,12 +26,14 @@
 			<string>Bartender App LLC</string>
 			<key>display_name</key>
 			<string>Bartender 6</string>
+			<key>maximum_os_version</key>
+			<string>26.99</string>
+			<key>minimum_os_version</key>
+			<string>15.0</string>
 			<key>name</key>
 			<string>%NAME%</string>
 			<key>unattended_install</key>
 			<true/>
-            <key>minimum_os_version</key><string>26.0</string>
-            <key>maximum_os_version</key><string>26.99</string>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>

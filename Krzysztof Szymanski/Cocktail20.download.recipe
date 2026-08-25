@@ -5,7 +5,7 @@
 	<key>Comment</key>
 	<string>Based on the Cocktail 19 recipes in the TechJedi51 AutoPkg repository.</string>
 	<key>Description</key>
-	<string>Downloads the latest version of Cocktail for Golden Gate</string>
+	<string>Downloads the latest version of Cocktail for Golden Gate.</string>
 	<key>Identifier</key>
 	<string>com.github.techjedi51.download.Cocktail20</string>
 	<key>Input</key>
@@ -33,15 +33,15 @@
 			<string>EndOfCheckPhase</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>CodeSignatureVerifier</string>
 			<key>Arguments</key>
 			<dict>
 				<key>input_path</key>
 				<string>%pathname%/Cocktail.app</string>
-				<key>expected_team_id</key>
-				<string>HC63V5YZGB</string>
+				<key>requirement</key>
+				<string>anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = HC63V5YZGB</string>
 			</dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>
