@@ -20,6 +20,8 @@
 			<dict>
 				<key>appcast_url</key>
 				<string>https://www.macbartender.com/B2/updates/AppcastB6.xml</string>
+				<key>urlencode_path_component</key>
+				<false/>
 			</dict>
 			<key>Processor</key>
 			<string>SparkleUpdateInfoProvider</string>
