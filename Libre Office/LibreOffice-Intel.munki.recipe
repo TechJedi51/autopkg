@@ -2,60 +2,59 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>Identifier</key>
-    <string>com.github.techjedi51.munki.LibreOffice-Intel</string>
-    <key>ParentRecipe</key>
-    <string>com.github.techjedi51.download.LibreOffice-Intel</string>
-    <key>Input</key>
-    <dict>
-        <key>NAME</key><string>LibreOffice</string>
-        <key>MUNKI_REPO_SUBDIR</key><string>apps/LibreOffice</string>
-        <key>pkginfo</key>
-        <dict>
-            <key>name</key><string>LibreOffice-Intel</string>
-            <key>display_name</key><string>LibreOffice (Intel)</string>
-            <key>description</key><string>LibreOffice productivity suite for Intel Macs</string>
-            <key>developer</key><string>The Document Foundation</string>
-            <key>catalogs</key><array><string>testing</string></array>
-            <key>unattended_install</key><true/>
-            <key>minimum_os_version</key><string>10.15</string>
-            <key>supported_architectures</key><array><string>x86_64</string></array>
-        </dict>
-    </dict>
-    <key>Process</key>
-    <array>
-        <!-- Verify signature -->
-        <dict>
-            <key>Processor</key><string>CodeSignatureVerifier</string>
-            <key>Arguments</key>
-            <dict>
-                <key>input_path</key><string>%pathname%/LibreOffice.app</string>
-                <key>requirement</key>
-                <string>identifier "org.libreoffice.script" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "7P5S3ZLCN7"</string>
-            </dict>
-        </dict>
-
-        <!-- Extract version from Info.plist -->
-        <dict>
-            <key>Processor</key><string>Versioner</string>
-            <key>Arguments</key>
-            <dict>
-                <key>input_plist_path</key><string>%pathname%/LibreOffice.app/Contents/Info.plist</string>
-                <key>plist_version_key</key><string>CFBundleShortVersionString</string>
-            </dict>
-        </dict>
-
-        <!-- Import into Munki -->
-        <dict>
-            <key>Processor</key><string>MunkiImporter</string>
-            <key>Arguments</key>
-            <dict>
-                <key>pkg_path</key><string>%pathname%</string>
-                <key>version</key><string>%version%</string>
-                <key>repo_subdirectory</key><string>%MUNKI_REPO_SUBDIR%</string>
-                <key>name</key><string>LibreOffice-Intel</string>
-            </dict>
-        </dict>
-    </array>
+	<key>Description</key>
+	<string>Downloads, verifies, and imports the latest Intel LibreOffice build into Munki.</string>
+	<key>Identifier</key>
+	<string>com.github.techjedi51.munki.LibreOffice-Intel</string>
+	<key>Input</key>
+	<dict>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/LibreOffice</string>
+		<key>NAME</key>
+		<string>LibreOffice</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>testing</string>
+			</array>
+			<key>description</key>
+			<string>LibreOffice productivity suite for Intel Macs.</string>
+			<key>developer</key>
+			<string>The Document Foundation</string>
+			<key>display_name</key>
+			<string>LibreOffice (Intel)</string>
+			<key>minimum_os_version</key>
+			<string>11.0</string>
+			<key>name</key>
+			<string>LibreOffice-Intel</string>
+			<key>supported_architectures</key>
+			<array>
+				<string>x86_64</string>
+			</array>
+			<key>unattended_install</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>2.3</string>
+	<key>ParentRecipe</key>
+	<string>com.github.techjedi51.download.LibreOffice-Intel</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%pathname%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+				<key>version</key>
+				<string>%version%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
 </dict>
 </plist>
