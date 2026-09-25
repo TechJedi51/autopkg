@@ -2,43 +2,73 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>Identifier</key>
-    <string>com.github.techjedi51.download.LibreOffice-Apple-Silicon</string>
-    <key>Description</key>
-    <string>Downloads the latest Apple Silicon LibreOffice build using constructed direct URL.</string>
-    <key>Input</key>
-    <dict>
-        <key>DOWNLOAD_PAGE</key>
-        <string>https://www.libreoffice.org/download/download-libreoffice/</string>
-        <key>ARCH_PATH</key>
-        <string>aarch64</string>
-        <key>ARCH_SUFFIX</key>
-        <string>aarch64</string>
-    </dict>
-    <key>Process</key>
-    <array>
-        <!-- Extract version from the page -->
-        <dict>
-            <key>Processor</key><string>URLTextSearcher</string>
-            <key>Arguments</key>
-            <dict>
-                <key>url</key><string>%DOWNLOAD_PAGE%</string>
-                <key>re_pattern</key>
-                <string>libreoffice/stable/([0-9.]+)/mac/aarch64/LibreOffice_[0-9.]+_MacOS_aarch64\.dmg</string>
-                <key>result_output_var_name</key><string>version</string>
-            </dict>
-        </dict>
-
-        <!-- Download using manually constructed final URL -->
-        <dict>
-            <key>Processor</key><string>URLDownloader</string>
-            <key>Arguments</key>
-            <dict>
-                <key>url</key>
-                <string>https://download.documentfoundation.org/libreoffice/stable/%version%/mac/%ARCH_PATH%/LibreOffice_%version%_MacOS_%ARCH_SUFFIX%.dmg</string>
-                <key>filename</key><string>LibreOffice-AppleSilicon.dmg</string>
-            </dict>
-        </dict>
-    </array>
+	<key>Description</key>
+	<string>Downloads and verifies the latest Apple silicon LibreOffice build.</string>
+	<key>Identifier</key>
+	<string>com.github.techjedi51.download.LibreOffice-Apple-Silicon</string>
+	<key>Input</key>
+	<dict>
+		<key>ARCH_PATH</key>
+		<string>aarch64</string>
+		<key>ARCH_SUFFIX</key>
+		<string>aarch64</string>
+		<key>DOWNLOAD_PAGE</key>
+		<string>https://www.libreoffice.org/download/</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>2.3</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>re_pattern</key>
+				<string>libreoffice/stable/([0-9.]+)/mac/aarch64/LibreOffice_[0-9.]+_MacOS_aarch64\.dmg</string>
+				<key>result_output_var_name</key>
+				<string>version</string>
+				<key>url</key>
+				<string>%DOWNLOAD_PAGE%</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>filename</key>
+				<string>LibreOffice-AppleSilicon.dmg</string>
+				<key>url</key>
+				<string>https://download.documentfoundation.org/libreoffice/stable/%version%/mac/%ARCH_PATH%/LibreOffice_%version%_MacOS_%ARCH_SUFFIX%.dmg</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>input_path</key>
+				<string>%pathname%/LibreOffice.app</string>
+				<key>requirement</key>
+				<string>identifier "org.libreoffice.script" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "7P5S3ZLCN7"</string>
+			</dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>input_plist_path</key>
+				<string>%pathname%/LibreOffice.app/Contents/Info.plist</string>
+				<key>plist_version_key</key>
+				<string>CFBundleShortVersionString</string>
+			</dict>
+			<key>Processor</key>
+			<string>Versioner</string>
+		</dict>
+	</array>
 </dict>
 </plist>
